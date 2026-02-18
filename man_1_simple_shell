@@ -1,0 +1,94 @@
+.TH SIMPLE_SHELL 1 "February 2026" "Holberton School" "User Commands"
+.SH NAME
+simple_shell \- a simple UNIX command interpreter
+.SH SYNOPSIS
+.B hsh
+.SH DESCRIPTION
+.B simple_shell
+is a basic command line interpreter that executes commands read from standard input.
+It behaves similarly to
+.BR sh (1)
+in both interactive and non-interactive modes.
+
+In interactive mode, the shell displays a prompt and waits for user input.
+In non-interactive mode, the shell reads commands from standard input (for example, via a pipe).
+
+The shell executes programs by searching for them in the directories listed in the
+.B PATH
+environment variable, unless the command contains a slash character ('/'),
+in which case it is treated as a path.
+
+.SH INVOCATION
+Run the shell in interactive mode:
+.PP
+.RS
+.B ./hsh
+.RE
+.PP
+Run the shell in non-interactive mode:
+.PP
+.RS
+.B echo "/bin/ls" | ./hsh
+.RE
+
+.SH BUILTINS
+The following built-in commands are supported:
+.TP
+.B exit
+Exits the shell.
+.TP
+.B env
+Prints the current environment.
+.TP
+.B cd
+Changes the current working directory.
+
+.SH EXIT STATUS
+The shell returns
+.B 0
+on normal exit.
+If a command is not found, the shell prints an error message to standard error and returns status
+.BR 127 .
+
+.SH ENVIRONMENT
+.TP
+.B PATH
+A colon-separated list of directories used to search for commands.
+
+.SH EXAMPLES
+Execute a command using PATH search:
+.PP
+.RS
+.B ls -l
+.RE
+.PP
+Execute a command by full path:
+.PP
+.RS
+.B /bin/ls
+.RE
+
+.SH FILES
+.TP
+.B AUTHORS
+List of contributors to this project.
+.TP
+.B README.md
+Project documentation and usage.
+
+.SH SEE ALSO
+.BR sh (1),
+.BR bash (1),
+.BR execve (2),
+.BR fork (2),
+.BR wait (2),
+.BR environ (7)
+
+.SH BUGS
+No known bugs.
+
+.SH AUTHORS
+Written by Holberton School students.
+See the
+.B AUTHORS
+file for a full list of contributors.
